@@ -38,7 +38,7 @@ ENV WORKSPACE=/home/easysoftware
 
 WORKDIR ${WORKSPACE}
 
-COPY --chown=easysoftware --from=Builder /EasySoftware/target/software-market-autocommit-0.0.1-SNAPSHOT.jar ${WORKSPACE}/target/software-market-autocommit-0.0.1-SNAPSHOT.jar
+COPY --chown=easysoftware --from=Builder /EasySoftware/target/easysoftware-pr-autohandle-0.0.1-SNAPSHOT.jar ${WORKSPACE}/target/easysoftware-pr-autohandle-0.0.1-SNAPSHOT.jar
 
 RUN echo "umask 027" >> /home/easysoftware/.bashrc \
     && echo "umask 027" >> /root/.bashrc \
@@ -90,4 +90,4 @@ EXPOSE 8080
 
 USER easysoftware
 
-CMD java -jar ${WORKSPACE}/target/software-market-autocommit-0.0.1-SNAPSHOT.jar --spring.config.location=${APPLICATION_PATH}
+CMD java -jar ${WORKSPACE}/target/easysoftware-pr-autohandle-0.0.1-SNAPSHOT.jar --spring.config.location=${APPLICATION_PATH}
