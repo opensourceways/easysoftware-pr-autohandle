@@ -221,7 +221,7 @@ public class RpmPrHandleTask {
                     return Boolean.TRUE;
                 }
                 // 如果在/repair 之后openeuler-ci-bot有/retest 并且还不符合终结逻辑则继续提交/repair
-                if (lastestResetNum > lastestRepairNum)
+                if (lastestResetNum >= lastestRepairNum)
                     gitService.upPrComments(token, rpmPrDo.getOwner(), rpmPrDo.getRepo(), rpmPrDo.getNumber(), "/repair");
 
                 Thread.sleep(1200000);
