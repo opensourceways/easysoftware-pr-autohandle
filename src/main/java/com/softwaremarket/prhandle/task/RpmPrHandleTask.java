@@ -97,10 +97,13 @@ public class RpmPrHandleTask {
         for (RpmPrDo rpmPrDo : rpmPrRepairList) {
             threadPool.execute(() -> {
                 Boolean aBoolean;
-                do {
+                for (int i = 0; i < 10; i++) {
                     aBoolean = repairPrOrClose(rpmPrDo, rpmConfig.getForkInfo().getAccessToken());
-                } while (!aBoolean);
-                log.info(rpmPrDo.getHtmlUrl() + " 执行完毕");
+                    if (aBoolean) {
+                        break;
+                    }
+                    log.info(rpmPrDo.getHtmlUrl() + " 执行完毕");
+                }
             });
         }
 
